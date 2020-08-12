@@ -23,7 +23,7 @@ export class HeroDetailComponent implements OnInit {
 
 
   ngOnInit() {
-    this.incr = this.route.snapshot.params.incr || 0;
+    this.incr = this.route.snapshot.params.incr;
     this.hero$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
         this.service.getHero(params.get('id')))
@@ -41,6 +41,13 @@ export class HeroDetailComponent implements OnInit {
       setTimeout(() =>  {
         this.router.navigate([this.router.url.split(';')[0], { incr }], {replaceUrl:true});
       });
+  }
+
+  removeInc() {
+    this.incr = undefined;
+    setTimeout(() =>  {
+      this.router.navigate([this.router.url.split(';')[0]], {replaceUrl:true});
+    });
   }
 
   gotoHeroes(hero: Hero) {
