@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 
 import { HeroService } from '../hero.service';
 import { Hero } from '../hero';
-import { ConsoleReporter } from 'jasmine';
 
 @Component({
   selector: 'app-hero-detail',
