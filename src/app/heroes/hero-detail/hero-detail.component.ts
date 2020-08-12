@@ -36,17 +36,19 @@ export class HeroDetailComponent implements OnInit {
   increment() {
       let incr = this.route.snapshot.params.incr;
       incr = incr ? +incr + 1 : 1;
+      let double = incr * 2;
       this.incr = incr;
       console.log(incr) ;
       setTimeout(() =>  {
-        this.router.navigate([this.router.url.split(';')[0], { incr }], {replaceUrl:true});
+        this.router.navigate([this.router.url.split(';')[0], { incr, double }], {replaceUrl:true});
       });
   }
 
   removeInc() {
     this.incr = undefined;
+    let double = this.route.snapshot.params.double;
     setTimeout(() =>  {
-      this.router.navigate([this.router.url.split(';')[0]], {replaceUrl:true});
+      this.router.navigate([this.router.url.split(';')[0], {double}], {replaceUrl:true});
     });
   }
 
